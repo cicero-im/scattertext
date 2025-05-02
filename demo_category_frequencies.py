@@ -29,7 +29,7 @@ print('Open ./' + fn + ' in Chrome or Firefox.')
 
 import requests, zipfile, io
 coca_sample_url = 'http://corpus.byu.edu/cocatext/samples/text.zip'
-zip_file = zipfile.ZipFile(io.BytesIO(requests.get(coca_sample_url).content))
+zip_file = zipfile.ZipFile(io.BytesIO(requests.get(coca_sample_url, timeout=60).content))
 
 document_df = pd.DataFrame(
 	[{'text': zip_file.open(fn).read().decode('utf-8'),
