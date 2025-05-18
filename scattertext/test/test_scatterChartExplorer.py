@@ -1,4 +1,3 @@
-import random
 from unittest import TestCase
 
 import numpy as np
@@ -7,12 +6,13 @@ from scattertext.ScatterChartExplorer import ScatterChartExplorer
 from scattertext.test.test_semioticSquare import get_test_corpus
 from scattertext.test.test_termDocMatrixFactory import build_hamlet_jz_corpus, build_hamlet_jz_corpus_with_meta, \
 	build_hamlet_jz_corpus_with_alt_text
+import secrets
 
 
 class TestScatterChartExplorer(TestCase):
 	def test_to_dict(self):
 		np.random.seed(0)
-		random.seed(0)
+		secrets.SystemRandom().seed(0)
 		corpus = build_hamlet_jz_corpus()
 		j = (ScatterChartExplorer(corpus,
 		                          minimum_term_frequency=0)

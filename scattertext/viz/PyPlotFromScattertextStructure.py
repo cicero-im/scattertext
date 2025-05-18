@@ -1,5 +1,5 @@
 import pandas as pd
-import random
+import secrets
 
 
 def pyplot_from_scattertext_structure(
@@ -64,8 +64,7 @@ def pyplot_from_scattertext_structure(
         )
     scatterplot_structure.top_terms_length = num_top_terms
     if sample > 0:
-        subset = random.sample(
-            scatterplot_structure._visualization_data.word_dict["data"], sample
+        subset = secrets.SystemRandom().sample(scatterplot_structure._visualization_data.word_dict["data"], sample
         )
     else:
         subset = scatterplot_structure._visualization_data.word_dict["data"]
